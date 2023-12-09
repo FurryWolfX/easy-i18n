@@ -55,22 +55,10 @@ public class AddAction extends AnAction {
             return null;
         }
 
-        if(manager.getDisplayName().equals(
-                ResourceBundle.getBundle("messages").getString("view.tree.title"))) { // Tree View
-
-            TreePath path = window.getTreeView().getTree().getSelectionPath();
-
-            if(path != null) {
-                return TreeUtil.getFullPath(path);
-            }
-
-        } else { // Table View
-            int row = window.getTableView().getTable().getSelectedRow();
-
-            if(row >= 0) {
-                String path = String.valueOf(window.getTableView().getTable().getValueAt(row, 0));
-                return converter.fromString(path);
-            }
+        int row = window.getTableView().getTable().getSelectedRow();
+        if(row >= 0) {
+            String path = String.valueOf(window.getTableView().getTable().getValueAt(row, 0));
+            return converter.fromString(path);
         }
 
         return null;

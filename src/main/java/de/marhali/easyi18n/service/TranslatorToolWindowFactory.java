@@ -11,7 +11,6 @@ import com.intellij.ui.content.ContentFactory;
 import de.marhali.easyi18n.InstanceManager;
 import de.marhali.easyi18n.action.*;
 import de.marhali.easyi18n.tabs.TableView;
-import de.marhali.easyi18n.tabs.TreeView;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -29,13 +28,6 @@ public class TranslatorToolWindowFactory implements ToolWindowFactory, DumbAware
     public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
         InstanceManager manager = InstanceManager.get(project);
         ContentFactory contentFactory = ContentFactory.getInstance();
-
-        // Translations tree view
-        TreeView treeView = new TreeView(project);
-        Content treeContent = contentFactory.createContent(treeView.getRootPanel(),
-                ResourceBundle.getBundle("messages").getString("view.tree.title"), false);
-
-        toolWindow.getContentManager().addContent(treeContent);
 
         // Translations table view
         TableView tableView = new TableView(project);
@@ -55,10 +47,9 @@ public class TranslatorToolWindowFactory implements ToolWindowFactory, DumbAware
         toolWindow.setTitleActions(actions);
 
         // Initialize Window Manager
-        WindowManager.getInstance().initialize(toolWindow, treeView, tableView);
+        WindowManager.getInstance().initialize(toolWindow, tableView);
 
         // Synchronize ui with underlying data
-        manager.uiBus().addListener(treeView);
         manager.uiBus().addListener(tableView);
         manager.bus().propagate().onUpdateData(manager.store().getData());
     }

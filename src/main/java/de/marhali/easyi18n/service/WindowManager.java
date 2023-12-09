@@ -1,9 +1,7 @@
 package de.marhali.easyi18n.service;
 
 import com.intellij.openapi.wm.ToolWindow;
-
 import de.marhali.easyi18n.tabs.TableView;
-import de.marhali.easyi18n.tabs.TreeView;
 
 /**
  * Provides access to the plugin's own tool-window.
@@ -14,7 +12,6 @@ public class WindowManager {
     private static WindowManager INSTANCE;
 
     private ToolWindow toolWindow;
-    private TreeView treeView;
     private TableView tableView;
 
     public static WindowManager getInstance() {
@@ -23,9 +20,8 @@ public class WindowManager {
 
     private WindowManager() {}
 
-    public void initialize(ToolWindow toolWindow, TreeView treeView, TableView tableView) {
+    public void initialize(ToolWindow toolWindow, TableView tableView) {
         this.toolWindow = toolWindow;
-        this.treeView = treeView;
         this.tableView = tableView;
     }
 
@@ -33,9 +29,6 @@ public class WindowManager {
         return toolWindow;
     }
 
-    public TreeView getTreeView() {
-        return treeView;
-    }
 
     public TableView getTableView() {
         return tableView;
