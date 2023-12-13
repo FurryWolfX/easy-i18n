@@ -1,8 +1,8 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin url="https://github.com/marhali/easy-i18n">
-    <id>de.marhali.easyi18n</id>
-    <name>Easy I18n</name>
-    <vendor>marhali</vendor>
+    <id>cn.wolfx.easyi18n</id>
+    <name>Easy I18n Special</name>
+    <vendor>wolfx</vendor>
 
     <!-- Product and plugin compatibility requirements -->
     <!-- https://plugins.jetbrains.com/docs/intellij/plugin-compatibility.html -->
